@@ -1,0 +1,23 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Minha API REST",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "API",
+    "REST",
+    "loja"
+  ],
+  "author": "Adalto Selau Sparremberger",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "http-errors": "^2.0.1",
+    "knex": "^3.2.10",
+    "mysql": "^2.18.1"
+  }
+}
