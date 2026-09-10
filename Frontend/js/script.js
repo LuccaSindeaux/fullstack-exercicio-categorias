@@ -2,6 +2,11 @@ const listaCategorias = document.getElementById("listaCategorias");
 
 const URL = "http://localhost:8001"
 const endPointCategoria = URL + "/category"
+const endPointProduto = URL + "/product"
+
+const formulario = document.getElementById("formCategoria");
+const campoId = document.getElementById("idCat");
+const campoNome = document.getElementById("txtNome");
 
 async function loadCategorias(){
     try{
@@ -37,3 +42,30 @@ async function loadCategorias(){
 }
 
 loadCategorias();
+
+async function excluirCategoria(id){
+    const confirma = confirm( "Confirma exclusão?" );
+
+    if( !confirma ) return
+
+    try {
+        const resposta = await fetch(
+            `${endPointCategoria}/${id}`,
+            {method: 'DELETE'}
+        )
+        if( resposta.ok ){
+            alert("Categoria excluída cokm sucesso!")
+            loadCategorias();
+        }
+    } catch (erro){
+        console.log(erro);
+        alert( "Erro ao excluir categoria" );
+    }
+}
+
+function preencherForm(idCat, nomeCat){
+    campoId.value = idCat;
+    campoNome.value = nomeCat;
+
+    
+}
