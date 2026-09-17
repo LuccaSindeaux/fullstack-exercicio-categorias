@@ -25,10 +25,10 @@ async function loadCategorias(){
                     <td>${cat.id}</td>
                     <td>${cat.nome}</td>
                     <td>
-                        <button class="btn btn-info" onclick="preencherForm( '${cat.id}', '${cat.nome}' )">
+                        <button class = "btn btn-info" onclick = "preencherForm( ${cat.id}, ${cat.nome} )">
                             Editar
                         </button>
-                        <button class="btn btn-danger" onclick="excluirCategoria( ${cat.id} )">
+                        <button class = "btn btn-danger" onclick = "excluirCategoria( ${cat.id} )">
                             Excluir
                         </button>
                     </td>
@@ -66,60 +66,4 @@ async function excluirCategoria(id){
 function preencherForm(idCat, nomeCat){
     campoId.value = idCat;
     campoNome.value = nomeCat;
-}
-
-formulario.addEventListener("submit", async function(event){
-    event.preventDefault();
-    
-    const idCat = campoId.value;
-    const categoria = {nome : campoNome.value};
-
-    try {
-        if(idCat){
-            await editarCategoria(idCat, categoria);
-        }else{
-            await addCategoria(categoria);
-        }
-    } catch (erro) {
-        console.error(erro);
-        alert("Erro ao adicionar ou editar categoria");
-    }
-})
-
-async function addCategoria(categoria){
-    const resposta = await fetch(
-        endPointCategoria, {
-            method: "POST",
-            headers: {
-                "Content-Type" : "application/json"
-            },
-            body: JSON.stringify(categoria)
-        }
-    );
-    if(resposta.ok){
-        loadCategorias();
-    }
-    return await resposta.json();
-}
-
-async function editarCategoria(idCat, categoria) {
-    try {
-        const resposta = await fetch(
-            `${endPointCategoria}/${idCat}`, 
-            {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(categoria)
-            }
-        );
-        if(resposta.ok){
-            alert("Categoria atualizada com sucesso!")
-            loadCategorias();
-        }
-    } catch (erro) {
-        console.error(erro)
-        alert("Erro ao editar categoria")
-    }
 }
