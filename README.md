@@ -12,15 +12,16 @@ Este diretório foi clonado do GitHub do professor Adalto. Nele há toda a confi
 O diretório é o backend, na pasta ```api > index.js```, possui a api com os endpoints configurados, os verbos https, e as constantes que informam nome, host, hnome do banco, etc. 
 
 ```js
+// Comentários não fazem parte do código original no index.js!
 const express = require("express")
-const knex = require("knex")
+const knex = require("knex") // O Knex.js é um Query Builder (Construtor de Consultas) SQL flexível e amplamente utilizado para Node.js.
 const http_errors = require("http-errors")
-const cors = require("cors")
+const cors = require("cors") // O extra, cors tê, de ser instalado
 
-const PORT = 8001
-const HOSTNAME = "localhost"
+const PORT = 8001 // vai rodar na porta 8001, visto no phpmyadmin
+const HOSTNAME = "localhost" // vai ser um host local
 
-const api = express()
+const api = express() // Framework web para Node.js, a api será feita neste framework
 api.use( express.json() )
 api.use( express.urlencoded( { extended : true } ) )
 api.use(cors())
@@ -33,7 +34,7 @@ const conn = knex( {
         password : "" ,
         database : "loja_26_1"
     }
-} ) 
+} ) // configuração do Knex, qual db ele lerá (mysql), nome do host, do database, etc. 
 ```
 
 ## Banco de dados 
