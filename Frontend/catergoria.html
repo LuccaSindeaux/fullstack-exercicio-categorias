@@ -30,8 +30,61 @@
         <tbody id="listaCategorias"></tbody>
     </table>
 
+    <hr>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <div class="d-flex flex-nowrap justify-content-between align-items-center">
+      <h2 class="mb-0">Produtos</h2>
+      <button class="btn btn-primary" onclick="abrirModalProduto()">Cadastrar Produto</button>
+    </div>
+
+    <table class="table table-striped table-hover" id="tbProdutos">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Categoria</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="listaProdutos"></tbody>
+    </table>
+
+    <div class="modal fade" id="modalProduto" tabindex="-1" aria-labelledby="modalProdutoLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="" id="formProduto">
+            <input type="hidden" id="idProd">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="modalProdutoLabel">Cadastrar Produto</h1>
+              <button type="button" class="btn-close" onclick="fecharModalProduto()" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="txtNomeProd" class="form-label">Nome:</label>
+                <input type="text" id="txtNomeProd" class="form-control" placeholder="Digite o nome do produto">
+              </div>
+              <div class="mb-3">
+                <label for="txtPreco" class="form-label">Preço:</label>
+                <input type="number" id="txtPreco" class="form-control" step="0.01" min="0" placeholder="Digite o preço">
+              </div>
+              <div class="mb-3">
+                <label for="selCategoria" class="form-label">Categoria:</label>
+                <select id="selCategoria" class="form-select">
+                  <option value="">Selecione a categoria</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" onclick="fecharModalProduto()">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGglyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src = "js/script.js" ></script>
   </body>
 </html>
